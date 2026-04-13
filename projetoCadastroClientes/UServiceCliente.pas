@@ -1,0 +1,96 @@
+unit UServiceCliente;
+
+interface
+
+uses Data.DB, UDB, UCliente;
+
+type
+  TClientService = class
+    procedure SalvarCliente(cliente: Tcliente);
+    Function BuscarCliente(id: Integer): Tcliente;
+    procedure EditarCliente(cliente: Tcliente);
+    procedure BuscarLista;
+    Function verificaCpfExistente(Cpf: String; id: Integer): Boolean;
+  private
+  public
+  end;
+
+implementation
+
+procedure TClientService.SalvarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+  sql := 'INSERT INTO CLIENTE(name,cpf,data_nascimento) Values ( :nome, :cpf, :dataNasc)';
+  UDB.DataModule1.InserirValores.sql.Text := sql;
+  UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+  UDB.DataModule1.InserirValores.ParamByName('cpf').AsString := cliente.Cpf;
+  UDB.DataModule1.InserirValores.ParamByName('dataNasc').AsDate := cliente.dataNasc;
+  UDB.DataModule1.InserirValores.execSql;
+end;
+
+Function TClientService.BuscarCliente(id: Integer): Tcliente;
+var
+  sql: string;
+  cliente: Tcliente;
+begin
+  sql := 'SELECT * FROM CLIENTE c WHERE c.id = :id';
+  UDB.DataModule1.BuscarClientePorId.sql.Text := sql;
+  UDB.DataModule1.BuscarClientePorId.ParamByName('id').AsInteger := id;
+  UDB.DataModule1.BuscarClientePorId.open;
+
+  cliente := Tcliente.Create;
+
+  cliente.codigo := UDB.DataModule1.BuscarClientePorId.FieldByName('id').AsInteger;
+  cliente.nome := UDB.DataModule1.BuscarClientePorId.FieldByName('name').AsString;
+  cliente.Cpf := UDB.DataModule1.BuscarClientePorId.FieldByName('cpf').AsString;
+  cliente.dataNasc := UDB.DataModule1.BuscarClientePorId.FieldByName('data_nascimento').AsDateTime;
+  Result := cliente;
+
+end;
+
+procedure TClientService.EditarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+  sql := 'update cliente set name = :nome, cpf = :cpf, data_nascimento = :dataNasc where id = :id';
+  UDB.DataModule1.InserirValores.sql.Text := sql;
+  UDB.DataModule1.InserirValores.ParamByName('id').AsInteger := cliente.codigo;
+  UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+  UDB.DataModule1.InserirValores.ParamByName('cpf').AsString := cliente.Cpf;
+  UDB.DataModule1.InserirValores.ParamByName('dataNasc').AsDate := cliente.dataNasc;
+  UDB.DataModule1.InserirValores.execSql;
+end;
+
+procedure TClientService.BuscarLista;
+begin
+  UDB.DataModule1.DataSourceDeBuscaDaLista.Enabled := false;
+  UDB.DataModule1.BuscarListaDeClientes.Close;
+  UDB.DataModule1.BuscarListaDeClientes.open;
+  UDB.DataModule1.DataSourceDeBuscaDaLista.Enabled := true;
+
+end;
+
+Function TClientService.verificaCpfExistente(Cpf: String; id: Integer): Boolean;
+var
+  sql: string;
+  cliente: Tcliente;
+begin
+
+  UDB.DataModule1.verificaCpfExistente.Close;
+  sql := 'SELECT COUNT(*) > 0 as cpf_existe FROM CLIENTE c WHERE c.cpf = :cpf';
+  UDB.DataModule1.verificaCpfExistente.sql.Text := sql;
+  UDB.DataModule1.verificaCpfExistente.ParamByName('cpf').AsString := Cpf;
+
+  if id <> 0 then
+  begin
+    UDB.DataModule1.verificaCpfExistente.sql.Text := UDB.DataModule1.verificaCpfExistente.sql.Text + ' AND c.id <> :id';
+    UDB.DataModule1.verificaCpfExistente.ParamByName('id').AsInteger := id;
+  end;
+
+  UDB.DataModule1.verificaCpfExistente.open;
+  Result := UDB.DataModule1.verificaCpfExistente.FieldByName('cpf_existe').AsBoolean;
+
+end;
+
+end.

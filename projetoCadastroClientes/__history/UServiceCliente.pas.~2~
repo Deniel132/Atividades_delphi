@@ -1,0 +1,29 @@
+unit UServiceCliente;
+
+interface
+
+uses System.SysUtils, System.Variants, System.Classes, Data.DB,UDB,UCliente;
+
+type
+  TClientService = class
+  procedure SalvarCliente(cliente: Tcliente);
+  private
+  public
+  end;
+
+implementation
+
+procedure TClientService.SalvarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+        sql:= 'INSERT INTO CLIENTE(name,cpf,data_nascimento) Values ( :nome, :cpf, :dataNasc)';
+       UDB.DataModule1.InserirValores.SQL.Text:= sql;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.cpf;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsDate := cliente.dataNasc;
+end;
+
+
+
+end.

@@ -1,0 +1,72 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,Unit1;
+
+type
+  TForm2 = class(TForm)
+    BtTeste: TButton;
+    Label1: TLabel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    procedure CreateForm(Sender: TObject);
+    procedure enable(Sender: TObject);
+    procedure desebla(Sender: TObject);
+    procedure teste(Sender: TObject);
+    procedure form3(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  valorTeste: integer;
+
+implementation
+
+{$R *.dfm}
+uses Unit4 ;
+
+procedure TForm2.CreateForm(Sender: TObject);
+begin
+    valorTeste := 10;
+end;
+
+procedure TForm2.desebla(Sender: TObject);
+begin
+  Label1.Enabled := false;
+  Label1.Visible := false;
+end;
+
+procedure TForm2.enable(Sender: TObject);
+begin
+    Label1.Enabled := true;
+     Label1.Visible := true;
+end;
+
+
+procedure TForm2.form3(Sender: TObject);
+    var
+       NovoForm4: TForm4;
+begin
+   NovoForm4 := TForm4.Create(nil);
+    NovoForm4.show;
+    Form2.hide;
+end;
+
+procedure TForm2.teste(Sender: TObject);
+    var
+       NovoForm: TForm1;
+begin
+    NovoForm := TForm1.Create(nil);
+    NovoForm.show;
+    Form2.hide;
+end;
+
+end.

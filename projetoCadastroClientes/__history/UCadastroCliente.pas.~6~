@@ -1,0 +1,93 @@
+unit UCadastroCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,UDB,UCliente;
+
+type
+  TFrmCadastro = class(TForm)
+    Shape1: TShape;
+    fechar: TLabel;
+    Label1: TLabel;
+    Shape2: TShape;
+    Salvar: TLabel;
+    Nome: TEdit;
+    Shape3: TShape;
+    Label2: TLabel;
+    Shape4: TShape;
+    Label3: TLabel;
+    Cpf: TEdit;
+    Shape5: TShape;
+    Label4: TLabel;
+    Shape6: TShape;
+    Label5: TLabel;
+    Data: TDateTimePicker;
+    LabelId: TLabel;
+    procedure fecharClick(Sender: TObject);
+     procedure formBack(form: TForm);
+    procedure CpfKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+  private
+     BackForm: TForm;
+     ultimoId: Integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadastro: TFrmCadastro;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmCadastro.formBack(form: TForm);
+begin
+    BackForm := form;
+end;
+
+
+procedure TFrmCadastro.FormCreate(Sender: TObject);
+begin
+    DataModule1.BuscarUltimoId.Open;
+if not DataModule1.DataSourceDeBuscarUltimoId.DataSet.FieldByName('ultimo_id').IsNull then
+  begin
+  ultimoId:= DataModule1.DataSourceDeBuscarUltimoId.DataSet.FieldByName('ultimo_id').AsInteger;
+  labelId.Caption:= (ultimoId + 1).ToString;
+  KeyPreview := True;
+  end
+else
+    labelId.Caption:= 1.ToString;
+end;
+
+procedure TFrmCadastro.CpfKeyPress(Sender: TObject; var Key: Char);
+var
+  editarCpf: string;
+begin
+  if not(Key = #8)  then
+    begin
+        if  (Length(Cpf.Text) = 3) or (Length(Cpf.Text) = 7) then
+        begin
+          editarCpf := cpf.Text + '.';
+          cpf.Text:= editarCpf;
+          Cpf.SelStart := Length(Cpf.Text);
+        end
+        else if Length(cpf.Text) = 11 then
+        begin
+          editarCpf := cpf.Text + '-' ;
+          cpf.Text:= editarCpf;
+          Cpf.SelStart := Length(Cpf.Text);
+        end;
+  end;
+end;
+
+procedure TFrmCadastro.fecharClick(Sender: TObject);
+begin
+    BackForm.show;
+    self.Release;
+end;
+
+end.

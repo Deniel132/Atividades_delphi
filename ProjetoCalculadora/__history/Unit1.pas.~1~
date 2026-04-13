@@ -1,0 +1,82 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    ButtonMais: TButton;
+    ButtonIgual: TButton;
+    Button: TButton;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    ButtonApagar: TButton;
+    ButtonApagarTudo: TButton;
+    LabelCelsius: TLabel;
+    Button9: TButton;
+    Button6: TButton;
+    Button5: TButton;
+    Button4: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button10: TButton;
+    ButtonVirgula: TButton;
+    LabelFahrenheit: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Button11: TButton;
+    Button12: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure Numero(Sender: TObject);
+    procedure porVirgula(Sender: TObject);
+    function EscolherLabel:TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  eCelsius:boolean;
+  LabelPrincipal:Tlabel;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TForm1.Numero(Sender: TObject);
+begin
+        LabelPrincipal.Caption := LabelPrincipal.Caption + (Sender as TButton).Caption
+  end;
+
+
+procedure TForm1.porVirgula(Sender: TObject);
+begin
+if Pos(FormatSettings.DecimalSeparator, LabelPrincipal.Caption) = 0 then
+    LabelPrincipal.Caption := LabelPrincipal.Caption + FormatSettings.DecimalSeparator;
+end;
+
+function TForm1.EscolherLabel: TLabel;
+begin
+  if eCelsius then
+    Result := labelCelsius
+  else
+    Result := LabelFahrenheit;
+end;
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+    LabelCelsius.Caption := '0';
+    LabelFahrenheit.Caption := '0';
+    labelPrincipal := EscolherLabel;
+end;
+
+
+end.

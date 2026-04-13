@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Port=7777'
+      
+        'Password=77726F981F568BA3348E3BD5F65D6D9F8E618C7C21FBEE2AAEE8656' +
+        'A4E68E437'
+      'Database=mobiage'
+      'Server=172.16.100.239'
+      'User_Name=mobiage'
+      'DriverID=PG')
+    Left = 280
+    Top = 248
+  end
+end

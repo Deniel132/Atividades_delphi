@@ -1,0 +1,63 @@
+unit UServiceCliente;
+
+interface
+
+uses  Data.DB,UDB,UCliente;
+
+type
+  TClientService = class
+  procedure SalvarCliente(cliente: Tcliente);
+  Function BuscarCliente(id: Integer): tCliente;
+  procedure EditarCliente(cliente: Tcliente);
+  private
+  public
+  end;
+
+implementation
+
+procedure TClientService.SalvarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+       sql:= 'INSERT INTO CLIENTE(name,cpf,data_nascimento) Values ( :nome, :cpf, :dataNasc)';
+       UDB.DataModule1.InserirValores.SQL.Text:= sql;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+       UDB.DataModule1.InserirValores.ParamByName('cpf').AsString := cliente.cpf;
+       UDB.DataModule1.InserirValores.ParamByName('dataNasc').AsDate := cliente.dataNasc;
+       UDB.DataModule1.InserirValores.execSql;
+end;
+
+Function TClientService.BuscarCliente(id: Integer): tCliente;
+var
+  sql: string;
+  cliente: tCliente;
+begin
+       sql:= 'SELECT * FROM CLIENTE c WHERE c.id = :id';
+       UDB.DataModule1.BuscarClientePorId.SQL.Text:= sql;
+       UDB.DataModule1.BuscarClientePorId.ParamByName('id').AsInteger := id;
+       UDB.DataModule1.BuscarClientePorId.open;
+
+       cliente := Tcliente.Create;
+
+       cliente.codigo :=  UDB.DataModule1.BuscarClientePorId.FieldByName('id').AsInteger;
+       cliente.Nome :=  UDB.DataModule1.BuscarClientePorId.FieldByName('name').AsString;
+       cliente.cpf :=  UDB.DataModule1.BuscarClientePorId.FieldByName('cpf').AsString;
+       cliente.DataNasc :=  UDB.DataModule1.BuscarClientePorId.FieldByName('data_nascimento').AsDateTime;
+       Result := cliente;
+ 
+end;
+
+procedure TClientService.EditarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+       sql:= 'update cliente set name = :nome, cpf = :cpf, data_nascimento = :dataNasc where id = :id';
+       UDB.DataModule1.InserirValores.SQL.Text:= sql;
+          UDB.DataModule1.InserirValores.ParamByName('id').ASInteger := cliente.codigo;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+       UDB.DataModule1.InserirValores.ParamByName('cpf').AsString := cliente.cpf;
+       UDB.DataModule1.InserirValores.ParamByName('dataNasc').AsDate := cliente.dataNasc;
+       UDB.DataModule1.InserirValores.execSql;
+end;
+
+end.

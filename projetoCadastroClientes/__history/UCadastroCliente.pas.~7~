@@ -1,0 +1,115 @@
+unit UCadastroCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, UDB, UCliente,
+  Vcl.Mask, UServiceCliente;
+
+type
+  TFrmCadastro = class(TForm)
+    Shape1: TShape;
+    Label1: TLabel;
+    Shape2: TShape;
+    Nome: TEdit;
+    Shape3: TShape;
+    Label2: TLabel;
+    Shape4: TShape;
+    Label3: TLabel;
+    Shape5: TShape;
+    Label4: TLabel;
+    Shape6: TShape;
+    LabelId: TLabel;
+    Data: TDateTimePicker;
+    ButtonNovoCliente: TButton;
+    Button1: TButton;
+    EditId: TEdit;
+    MaskEdit1: TMaskEdit;
+    procedure formBack(form: TForm);
+    // procedure CpfKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure MaskEdit1Click(Sender: TObject);
+    procedure ButtonNovoClienteClick(Sender: TObject);
+    procedure Editar(id: integer);
+  private
+    BackForm: TForm;
+    ultimoId: integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadastro: TFrmCadastro;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmCadastro.ButtonNovoClienteClick(Sender: TObject);
+var
+  Lcliente: Tcliente;
+  LClientService: TClientService;
+begin
+  Lcliente := Tcliente.create;
+  LClientService := TClientService.create;
+  try
+    Lcliente.Nome := Nome.Text;
+    Lcliente.cpf := MaskEdit1.Text;
+    Lcliente.DataNasc := Data.DateTime;
+    LClientService.SalvarCliente(Lcliente);
+  finally
+    LClientService.Free;
+    Lcliente.Free;
+  end;
+  showMessage('Cliente Salvo');
+  self.release;
+end;
+
+procedure TFrmCadastro.formBack(form: TForm);
+begin
+  BackForm := form;
+end;
+
+procedure TFrmCadastro.FormCreate(Sender: TObject);
+
+EditId.Visible := false;
+LabelId.Visible := false;
+end;
+
+procedure TFrmCadastro.Editar(id: integer);
+var
+  Lcliente: Tcliente;
+  LClientService: TClientService;
+begin
+  LClientService := TClientService.create;
+  try
+    Lcliente := LClientService.BuscarCliente(id);
+
+    EditId.Text := Lcliente.Codigo.toString;
+    Nome.Text := Lcliente.Nome;
+    MaskEdit1.Text := Lcliente.Nome;
+    Data.DateTime := Lcliente.Nome;
+
+  finally
+    LClientService.Free;
+    Lcliente.Free;
+  end;
+
+  EditId.Visible := true;
+  LabelId.Visible := true;
+end;
+
+procedure TFrmCadastro.MaskEdit1Click(Sender: TObject);
+begin
+  MaskEdit1.SelStart := 0;
+end;
+
+procedure TFrmCadastro.Button1Click(Sender: TObject);
+begin
+  self.release;
+end;
+
+end.

@@ -1,0 +1,225 @@
+object FrmCadastro: TFrmCadastro
+  Left = 0
+  Top = 0
+  Caption = 's'
+  ClientHeight = 632
+  ClientWidth = 987
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Shape2: TShape
+    Left = -15
+    Top = 8
+    Width = 994
+    Height = 49
+  end
+  object Shape1: TShape
+    Left = -15
+    Top = 559
+    Width = 1001
+    Height = 73
+  end
+  object fechar: TLabel
+    Left = 859
+    Top = 567
+    Width = 127
+    Height = 65
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Fechar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    OnClick = fecharClick
+  end
+  object Label1: TLabel
+    Left = -23
+    Top = 8
+    Width = 824
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Cadastro de Cliente'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Salvar: TLabel
+    Left = 19
+    Top = 567
+    Width = 127
+    Height = 65
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Salvar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape3: TShape
+    Left = 9
+    Top = 192
+    Width = 272
+    Height = 49
+  end
+  object Label2: TLabel
+    Left = 1
+    Top = 192
+    Width = 240
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Nome: '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape4: TShape
+    Left = 9
+    Top = 272
+    Width = 272
+    Height = 49
+  end
+  object Label3: TLabel
+    Left = 1
+    Top = 272
+    Width = 240
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'CPF: '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape5: TShape
+    Left = 9
+    Top = 360
+    Width = 272
+    Height = 49
+  end
+  object Label4: TLabel
+    Left = 1
+    Top = 360
+    Width = 280
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Data. Nasc: '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape6: TShape
+    Left = 9
+    Top = 127
+    Width = 272
+    Height = 49
+  end
+  object Label5: TLabel
+    Left = 1
+    Top = 127
+    Width = 280
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Id: '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label6: TLabel
+    Left = 304
+    Top = 120
+    Width = 675
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object Nome: TEdit
+    Left = 304
+    Top = 192
+    Width = 675
+    Height = 45
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    MaxLength = 100
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Cpf: TEdit
+    Left = 304
+    Top = 272
+    Width = 675
+    Height = 45
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    MaxLength = 14
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 1
+    OnKeyPress = CpfKeyPress
+  end
+  object Data: TDateTimePicker
+    Left = 304
+    Top = 360
+    Width = 675
+    Height = 45
+    Date = 46121.000000000000000000
+    Time = 0.742627696759882400
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+end

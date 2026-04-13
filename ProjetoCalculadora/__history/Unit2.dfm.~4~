@@ -1,0 +1,204 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 602
+  ClientWidth = 395
+  Color = clCream
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OnCreate = FormCreate
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 8
+    Top = 20
+    Width = 375
+    Height = 89
+    Alignment = taRightJustify
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+    Layout = tlCenter
+  end
+  object ButtonMais: TButton
+    Left = 294
+    Top = 491
+    Width = 89
+    Height = 65
+    Caption = '+'
+    TabOrder = 0
+    OnClick = Operacao
+  end
+  object ButtonVirgula: TButton
+    Left = 104
+    Top = 491
+    Width = 89
+    Height = 65
+    Caption = '.'
+    TabOrder = 1
+    OnClick = porVirgula
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 395
+    Width = 89
+    Height = 65
+    Caption = '1'
+    TabOrder = 2
+    OnClick = Numero
+  end
+  object ButtonIgual: TButton
+    Left = 199
+    Top = 491
+    Width = 89
+    Height = 65
+    Caption = '='
+    TabOrder = 3
+    OnClick = igual
+  end
+  object Button2: TButton
+    Left = 104
+    Top = 395
+    Width = 89
+    Height = 65
+    Caption = '2'
+    TabOrder = 4
+    OnClick = Numero
+  end
+  object Button3: TButton
+    Left = 199
+    Top = 395
+    Width = 89
+    Height = 65
+    Caption = '3'
+    TabOrder = 5
+    OnClick = Numero
+  end
+  object ButtonMenos: TButton
+    Left = 294
+    Top = 395
+    Width = 89
+    Height = 65
+    Caption = '-'
+    TabOrder = 6
+    OnClick = Operacao
+  end
+  object Button6: TButton
+    Left = 199
+    Top = 307
+    Width = 89
+    Height = 65
+    Caption = '6'
+    TabOrder = 7
+    OnClick = Numero
+  end
+  object Button4: TButton
+    Left = 8
+    Top = 307
+    Width = 89
+    Height = 65
+    Caption = '4'
+    TabOrder = 8
+    OnClick = Numero
+  end
+  object Button5: TButton
+    Left = 104
+    Top = 307
+    Width = 89
+    Height = 65
+    Caption = '5'
+    TabOrder = 9
+    OnClick = Numero
+  end
+  object Button7: TButton
+    Left = 8
+    Top = 219
+    Width = 89
+    Height = 65
+    Caption = '7'
+    TabOrder = 10
+    OnClick = Numero
+  end
+  object Button8: TButton
+    Left = 104
+    Top = 219
+    Width = 89
+    Height = 65
+    Caption = '8'
+    TabOrder = 11
+    OnClick = Numero
+  end
+  object Button9: TButton
+    Left = 199
+    Top = 219
+    Width = 89
+    Height = 65
+    Caption = '9'
+    TabOrder = 12
+    OnClick = Numero
+  end
+  object ButtonVezes: TButton
+    Left = 294
+    Top = 307
+    Width = 89
+    Height = 65
+    Caption = '*'
+    TabOrder = 13
+    OnClick = Operacao
+  end
+  object ButtonApagarTudo: TButton
+    Left = 128
+    Top = 131
+    Width = 113
+    Height = 65
+    Caption = 'AC'
+    TabOrder = 14
+    OnClick = limparTudo
+  end
+  object ButtonApagar: TButton
+    Left = 270
+    Top = 131
+    Width = 113
+    Height = 65
+    Caption = '<-'
+    TabOrder = 15
+    OnClick = Apagar1
+  end
+  object ButtonDivisao: TButton
+    Left = 294
+    Top = 219
+    Width = 89
+    Height = 65
+    Caption = '/'
+    TabOrder = 16
+    OnClick = Operacao
+  end
+  object Button: TButton
+    Left = 8
+    Top = 491
+    Width = 89
+    Height = 65
+    Caption = '0'
+    TabOrder = 17
+    OnClick = Numero
+  end
+  object Button10: TButton
+    Left = 8
+    Top = 131
+    Width = 89
+    Height = 65
+    Caption = 'temp'
+    TabOrder = 18
+    OnClick = temperatura
+  end
+end

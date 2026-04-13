@@ -1,0 +1,77 @@
+unit Unit3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    Button1: TButton;
+    Button4: TButton;
+    carcaca: TShape;
+    verde: TShape;
+    Timer1: TTimer;
+    procedure Back(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure create(Sender: TObject);
+    procedure iniciarTimer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+  estaLigado: boolean;
+  corAtiva: integer;
+
+implementation
+
+{$R *.dfm}
+
+uses unit2;
+
+procedure TForm3.Back(Sender: TObject);
+begin
+  Form2.Show;
+  Self.Release;
+end;
+
+procedure TForm3.create(Sender: TObject);
+begin
+    estaLigado := false;
+    corAtiva   := 1;
+end;
+
+procedure TForm3.iniciarTimer(Sender: TObject);
+begin
+    Timer1.Enabled := estaLigado;
+    Timer1.Interval := 10000;
+end;
+
+procedure TForm3.Timer1Timer(Sender: TObject);
+begin
+      vermelho.Brush.Color := clred;
+      verde.Brush.Color := clred;
+      amarelo.Brush.Color := clred;
+      vermelho.Brush.Color := clred;
+
+     if corAtiva = 4 then
+      begin
+        corAtiva := 1;
+      end ;
+
+
+      case corAtiva of
+      1: vermelho.Brush.Color := clred;
+      2: verde.Brush.Color := clred;
+      3: amarelo.Brush.Color := clred;
+      end;
+
+      corAtiva := corAtiva + 1;
+end;
+
+end.

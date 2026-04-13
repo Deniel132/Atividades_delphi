@@ -1,0 +1,55 @@
+unit UClientList;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,UDB,
+  Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFrmClientList = class(TForm)
+    Shape1: TShape;
+    Voltar: TLabel;
+    LabelCliente: TLabel;
+    Shape2: TShape;
+    Label1: TLabel;
+    DBGrid1: TDBGrid;
+    procedure VoltarClick(Sender: TObject);
+    procedure setBackForm(Form: TForm);
+    procedure Label1Click(Sender: TObject);
+  private
+   BackForm: Tform;
+  public
+    { Public declarations }
+  end;
+
+var
+  ClientList: TFrmClientList;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmClientList.Label1Click(Sender: TObject);
+  LClientList: TFrmClientList;
+begin
+  LClientList := TFrmClientList.Create(nil);
+  LClientList.setBackForm(FrmHome);
+  LClientList.Show;
+  FrmHome.Hide;
+end;
+
+procedure TFrmClientList.setBackForm(Form: TForm);
+begin
+     BackForm := Form;
+end;
+
+procedure TFrmClientList.VoltarClick(Sender: TObject);
+begin
+    BackForm.show;
+    self.Release;
+end;
+
+end.

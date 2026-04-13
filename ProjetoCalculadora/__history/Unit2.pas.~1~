@@ -1,0 +1,99 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    ButtonMais: TButton;
+    ButtonVirgula: TButton;
+    Button1: TButton;
+    ButtonIgual: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    ButtonMenos: TButton;
+    Button6: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    ButtonVezes: TButton;
+    ButtonApagarTudo: TButton;
+    ButtonApagar: TButton;
+    ButtonDivisao: TButton;
+    Label1: TLabel;
+    Button: TButton;
+    procedure Numero(Sender: TObject);
+    procedure Operacao(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure RealizarOperacao(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  Valor1: Double;
+  Valor2: Double;
+  texto: string;
+  SimboloDaoperacao:string;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.Operacao(Sender: TObject);
+begin
+  SimboloDaoperacao := (Sender as TButton).Caption;
+  if Valor1 = 0 then
+    begin
+      Valor1:= StrToFloatdef(Label1.Caption,0);
+      Label1.Caption := Label1.Caption + (Sender as TButton).Caption  ;
+      texto:= Label1.Caption;
+    end
+  else
+    Label1.Caption := Label1.Caption + (Sender as TButton).Caption
+end;
+
+procedure TForm2.RealizarOperacao(Sender: TObject);
+begin
+    if Valor1 = 0 then
+      begin
+        Label1.Caption := '0';
+      end
+  else
+    begin
+      texto := stringreplace(label1.Caption,texto,'',[rfReplaceAll]);
+      Valor2 := StrToFloatdef(texto,0);
+    end
+  end;
+
+  case SimboloDaoperacao of
+  '*':
+  end;
+
+
+
+
+end.
+
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+    Valor1:= 0;
+    Valor2:= 0;
+    Texto := '';
+end;
+
+procedure TForm2.Numero(Sender: TObject);
+begin
+      Label1.Caption := Label1.Caption + (Sender as TButton).Caption
+end.
+
+end.

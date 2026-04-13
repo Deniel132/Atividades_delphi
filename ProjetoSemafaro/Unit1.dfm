@@ -1,0 +1,81 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 441
+  ClientWidth = 826
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 0
+    Top = 0
+    Width = 826
+    Height = 37
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Ferias de Funcionarios'
+    Color = clTeal
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+    ExplicitWidth = 262
+  end
+  object Label2: TLabel
+    Left = 576
+    Top = 123
+    Width = 3
+    Height = 15
+  end
+  object Button1: TButton
+    Left = 384
+    Top = 352
+    Width = 113
+    Height = 41
+    Cursor = crHandPoint
+    Caption = 'Back Form'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clYellow
+    Font.Height = -24
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    StyleName = 'Windows'
+    OnClick = proximoForm
+  end
+  object Edit1: TEdit
+    Left = 128
+    Top = 120
+    Width = 137
+    Height = 23
+    TabOrder = 1
+    Text = 'Edit1'
+  end
+  object Button2: TButton
+    Left = 216
+    Top = 352
+    Width = 113
+    Height = 41
+    Cursor = crHandPoint
+    Caption = 'Passar Texto'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clYellow
+    Font.Height = -24
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    StyleName = 'Windows'
+    OnClick = passarTexto
+  end
+end

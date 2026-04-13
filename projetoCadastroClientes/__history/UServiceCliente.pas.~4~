@@ -1,0 +1,52 @@
+unit UServiceCliente;
+
+interface
+
+uses System.SysUtils, System.Variants, System.Classes, Data.DB,UDB,UCliente, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,UDB,
+  Data.DB, Vcl.Grids, Vcl.DBGrids,UCadastroCliente;
+
+type
+  TClientService = class
+  procedure SalvarCliente(cliente: Tcliente);
+  Function BuscarCliente(id: Integer): tCliente;
+  private
+  public
+  end;
+
+implementation
+
+procedure TClientService.SalvarCliente(cliente: Tcliente);
+var
+  sql: string;
+begin
+       sql:= 'INSERT INTO CLIENTE(name,cpf,data_nascimento) Values ( :nome, :cpf, :dataNasc)';
+       UDB.DataModule1.InserirValores.SQL.Text:= sql;
+       UDB.DataModule1.InserirValores.ParamByName('nome').AsString := cliente.nome;
+       UDB.DataModule1.InserirValores.ParamByName('cpf').AsString := cliente.cpf;
+       UDB.DataModule1.InserirValores.ParamByName('dataNasc').AsDate := cliente.dataNasc;
+       UDB.DataModule1.InserirValores.execSql;
+end;
+
+Function TClientService.BuscarCliente(id: Integer): tCliente;
+var
+  sql: string;
+begin
+       sql:= 'SELECT * FROM CLIENTE c WHERE c.id = :id';
+       UDB.DataModule1.BuscarClientePorId.SQL.Text:= sql;
+       UDB.DataModule1.BuscarClientePorId.ParamByName('id').AsInteger := id;
+       UDB.DataModule1.BuscarClientePorId.execSql;
+
+       cliente := Tcliente.Create(Self);
+       try
+       cliente.codigo :=BuscarClientePorId.FieldByName('id').AsInteger;
+       cliente.Nome :=BuscarClientePorId.FieldByName('name').AsString;
+       cliente.cpf := BuscarClientePorId.FieldByName('cpf').AsString;
+       cliente.DataNasc :=BuscarClientePorId.FieldByName('data_nascimeto').AsDate;
+       Result := cliente;
+       finally
+         cliente.Free;
+       end;
+end;
+
+end.

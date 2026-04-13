@@ -1,0 +1,145 @@
+object FrmClientList: TFrmClientList
+  Left = 479
+  Top = 117
+  Caption = 'FrmClientList'
+  ClientHeight = 650
+  ClientWidth = 996
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesigned
+  OnCreate = FormCreate
+  TextHeight = 15
+  object Shape2: TShape
+    Left = -1
+    Top = 0
+    Width = 1001
+    Height = 49
+  end
+  object Shape1: TShape
+    Left = -9
+    Top = 560
+    Width = 1001
+    Height = 82
+  end
+  object LabelCliente: TLabel
+    Left = -9
+    Top = 0
+    Width = 1009
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Listagem de Clientes'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object DBGrid1: TDBGrid
+    Left = -12
+    Top = 88
+    Width = 1000
+    Height = 409
+    DataSource = DataModule1.DataSourceDeBuscaDaLista
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Da'
+    Font.Style = []
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack, dgThumbTracking]
+    ParentColor = True
+    ParentFont = False
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'name'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Width = 500
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cpf'
+        Width = 170
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'data_nascimento'
+        Width = 200
+        Visible = True
+      end>
+  end
+  object ButtonNovoCliente: TButton
+    Left = 8
+    Top = 568
+    Width = 113
+    Height = 62
+    Caption = 'Cadastar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = ButtonNovoClienteClick
+  end
+  object ButtonEditar: TButton
+    Left = 448
+    Top = 568
+    Width = 113
+    Height = 62
+    Caption = 'Editar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = ButtonEditarClick
+  end
+  object Button1: TButton
+    Left = 864
+    Top = 568
+    Width = 113
+    Height = 62
+    Caption = 'Voltar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = VoltarClick
+  end
+end

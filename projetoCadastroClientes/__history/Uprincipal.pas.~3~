@@ -1,0 +1,60 @@
+unit Uprincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,UClientList,UDB;
+
+type
+  TFrmHome = class(TForm)
+    Label1: TLabel;
+    ClienteLabel: TLabel;
+    seta1: TShape;
+    seta2: TShape;
+    Shape3: TShape;
+    ShapeCliente: TShape;
+    fechar: TLabel;
+    Shape5: TShape;
+    procedure Label1Click(Sender: TObject);
+    procedure fecharClick(Sender: TObject);
+    procedure ClienteLabelClick(Sender: TObject);
+  private
+   setVisible: boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmHome: TFrmHome;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmHome.ClienteLabelClick(Sender: TObject);
+var
+  LClientList: TFrmClientList;
+begin
+  LClientList := TFrmClientList.Create(nil);
+  LClientList.setBackForm(FrmHome);
+  LClientList.Show;
+  FrmHome.Hide;
+end;
+
+procedure TFrmHome.fecharClick(Sender: TObject);
+begin
+   FrmHome.close;
+end;
+
+procedure TFrmHome.Label1Click(Sender: TObject);
+begin
+    setVisible:= not setVisible;
+     seta1.Visible := setVisible;
+     seta2.Visible := setVisible;
+     ClienteLabel.Visible := setVisible;
+     ShapeCliente.Visible := setVisible;
+end;
+
+end.

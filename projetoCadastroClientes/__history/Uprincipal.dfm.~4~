@@ -1,0 +1,100 @@
+object FrmHome: TFrmHome
+  Left = 0
+  Top = 0
+  Caption = 'FrmHome'
+  ClientHeight = 632
+  ClientWidth = 1004
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesigned
+  TextHeight = 15
+  object Shape5: TShape
+    Left = -5
+    Top = 567
+    Width = 1001
+    Height = 73
+  end
+  object ShapeCliente: TShape
+    Left = 341
+    Top = 88
+    Width = 658
+    Height = 49
+    Visible = False
+  end
+  object Shape3: TShape
+    Left = -5
+    Top = 8
+    Width = 1001
+    Height = 49
+  end
+  object Label1: TLabel
+    Left = -13
+    Top = 8
+    Width = 1009
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Cadastros'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    OnClick = Label1Click
+  end
+  object ClienteLabel: TLabel
+    Left = 352
+    Top = 88
+    Width = 644
+    Height = 49
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Clientes'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+    OnClick = ClienteLabelClick
+  end
+  object seta1: TShape
+    Left = 216
+    Top = 63
+    Width = 25
+    Height = 65
+    Visible = False
+  end
+  object seta2: TShape
+    Left = 216
+    Top = 112
+    Width = 113
+    Height = 25
+    Visible = False
+  end
+  object fechar: TLabel
+    Left = 869
+    Top = 575
+    Width = 127
+    Height = 65
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Fechar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    OnClick = fecharClick
+  end
+end

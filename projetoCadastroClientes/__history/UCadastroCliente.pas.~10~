@@ -1,0 +1,141 @@
+unit UCadastroCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, UDB, UCliente,
+  Vcl.Mask, UServiceCliente;
+
+type
+  TFrmCadastro = class(TForm)
+    Shape1: TShape;
+    Label1: TLabel;
+    Shape2: TShape;
+    Nome: TEdit;
+    Shape3: TShape;
+    Label2: TLabel;
+    Shape4: TShape;
+    Label3: TLabel;
+    Shape5: TShape;
+    Label4: TLabel;
+    Shape6: TShape;
+    LabelId: TLabel;
+    Data: TDateTimePicker;
+    ButtonNovoCliente: TButton;
+    Button1: TButton;
+    IdEdit: TEdit;
+    MaskEdit1: TMaskEdit;
+    procedure Button1Click(Sender: TObject);
+    procedure MaskEdit1Click(Sender: TObject);
+    procedure ButtonNovoClienteClick(Sender: TObject);
+    procedure Editar(id: integer);
+    procedure FormCreate(Sender: TObject);
+    function VerificaCamposVasios: boolean;
+  private
+    BackForm: TForm;
+    ultimoId: integer;
+    EEdicao: boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadastro: TFrmCadastro;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmCadastro.ButtonNovoClienteClick(Sender: TObject);
+var
+  Lcliente: Tcliente;
+  LClientService: TClientService;
+begin
+
+  if trim(nome.Text) = '' then
+    begin
+      showmessage('Campo Nome Sta Vasio');
+      exit;
+    end
+  else if trim( then
+
+
+
+
+  Lcliente := Tcliente.create;
+  LClientService := TClientService.create;
+  try
+    Lcliente.Nome := Nome.Text;
+    Lcliente.cpf := MaskEdit1.Text;
+    Lcliente.DataNasc := Data.DateTime;
+
+    if EEdicao then
+    begin
+      Lcliente.codigo := StrToInt(IdEdit.Text);
+      LClientService.EditarCliente(Lcliente);
+    end
+    else
+      LClientService.SalvarCliente(Lcliente);
+
+  finally
+    LClientService.Free;
+    Lcliente.Free;
+  end;
+  showMessage('Cliente Salvo');
+  LClientService.BuscarLista;
+  self.close;
+end;
+
+procedure TFrmCadastro.Editar(id: integer);
+var
+  Lcliente: Tcliente;
+  LClientService: TClientService;
+begin
+  LClientService := TClientService.create;
+  try
+    Lcliente := LClientService.BuscarCliente(id);
+
+    IdEdit.Text := Lcliente.codigo.toString;
+    Nome.Text := Lcliente.Nome;
+    MaskEdit1.Text := Lcliente.cpf;
+    Data.DateTime := Lcliente.DataNasc;
+
+  finally
+    LClientService.Free;
+    Lcliente.Free;
+  end;
+
+  EEdicao := true;
+  IdEdit.Visible := true;
+  LabelId.Visible := true;
+end;
+
+procedure TFrmCadastro.FormCreate(Sender: TObject);
+begin
+  EEdicao := false;
+end;
+
+function TFrmCadastro.VerificaCamposVasios: boolean;
+var
+  campoNome: string;
+begin
+  campoNome := Nome.Text;
+
+  if campoNome.IsEmpty then
+    Result := false;
+
+end;
+
+procedure TFrmCadastro.MaskEdit1Click(Sender: TObject);
+begin
+  MaskEdit1.SelStart := 0;
+end;
+
+procedure TFrmCadastro.Button1Click(Sender: TObject);
+begin
+  self.close;
+end;
+
+end.

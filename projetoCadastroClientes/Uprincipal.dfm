@@ -1,0 +1,115 @@
+object FrmHome: TFrmHome
+  Left = 479
+  Top = 97
+  Caption = 'FrmHome'
+  ClientHeight = 632
+  ClientWidth = 1004
+  Color = clGray
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  KeyPreview = True
+  Menu = Menu
+  Position = poDesigned
+  OnClose = FormClose
+  OnKeyPress = FormKeyPress
+  TextHeight = 15
+  object Shape5: TShape
+    Left = 856
+    Top = 544
+    Width = 148
+    Height = 94
+    Brush.Color = clMaroon
+  end
+  object ButtonFechar: TButton
+    Left = 880
+    Top = 558
+    Width = 105
+    Height = 58
+    Caption = 'Fechar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -27
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 0
+    StyleElements = [seClient, seBorder]
+    OnClick = ButtonFecharClick
+  end
+  object Edit1: TEdit
+    Left = 224
+    Top = 166
+    Width = 497
+    Height = 72
+    Alignment = taCenter
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Segoe UI Emoji'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 1
+    Text = 'Sistema'
+  end
+  object Edit2: TEdit
+    Left = 224
+    Top = 230
+    Width = 497
+    Height = 72
+    Alignment = taCenter
+    AutoSelect = False
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Segoe UI Emoji'
+    Font.Style = []
+    HideSelection = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 2
+    Text = 'de'
+  end
+  object Edit3: TEdit
+    Left = 224
+    Top = 294
+    Width = 497
+    Height = 72
+    Alignment = taCenter
+    AutoSelect = False
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Segoe UI Emoji'
+    Font.Style = []
+    HideSelection = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 3
+    Text = 'Cadastros'
+  end
+  object Menu: TMainMenu
+    AutoLineReduction = maManual
+    OwnerDraw = True
+    Left = 56
+    Top = 152
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      ShortCut = 16451
+      object Cadastros2: TMenuItem
+        AutoLineReduction = maManual
+        Caption = 'Clientes'
+        ShortCut = 16457
+        OnClick = Cadastros2Click
+      end
+    end
+  end
+end

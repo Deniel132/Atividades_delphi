@@ -1,0 +1,118 @@
+unit UClientList;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, UDB,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, UCadastroCliente, UServiceCliente;
+
+type
+  TFrmClientList = class(TForm)
+    Shape1: TShape;
+    LabelCliente: TLabel;
+    Shape2: TShape;
+    DBGrid1: TDBGrid;
+    ButtonNovoCliente: TButton;
+    ButtonEditar: TButton;
+    Voltar: TButton;
+    procedure VoltarClick(Sender: TObject);
+    procedure ButtonNovoClienteClick(Sender: TObject);
+    procedure ButtonEditarClick(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    BackForm: TForm;
+    idParaEdicao: integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  ClientList: TFrmClientList;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmClientList.ButtonEditarClick(Sender: TObject);
+var
+  LCadastroCliente: TFrmCadastro;
+begin
+
+  LCadastroCliente := TFrmCadastro.Create(nil);
+  LCadastroCliente.Editar(idParaEdicao);
+  LCadastroCliente.ShowModal;
+  ButtonEditar.Enabled := false;
+end;
+
+procedure TFrmClientList.ButtonNovoClienteClick(Sender: TObject);
+var
+  LCadastroCliente: TFrmCadastro;
+begin
+  LCadastroCliente := TFrmCadastro.Create(nil);
+  LCadastroCliente.ShowModal;
+end;
+
+procedure TFrmClientList.DBGrid1CellClick(Column: TColumn);
+begin
+  idParaEdicao := DataModule1.DataSourceDeBuscaDaLista.DataSet.FieldByName('id').AsInteger;
+  ButtonEditar.Enabled := true;
+end;
+
+procedure TFrmClientList.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = vk_return then
+  begin
+    idParaEdicao := DataModule1.DataSourceDeBuscaDaLista.DataSet.FieldByName('id').AsInteger;
+    ButtonEditar.Enabled := true;
+    ButtonEditar.Click;
+  end;
+end;
+
+procedure TFrmClientList.FormActivate(Sender: TObject);
+var
+  LClientService: TClientService;
+begin
+  LClientService := TClientService.Create;
+  try
+    LClientService.BuscarLista;
+  finally
+    LClientService.Free;
+  end;
+end;
+
+procedure TFrmClientList.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  self.release;
+end;
+
+procedure TFrmClientList.FormCreate(Sender: TObject);
+begin
+  ButtonEditar.Enabled := false;
+end;
+
+procedure TFrmClientList.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Key = Ord('S')) and (ssCtrl in Shift) then
+    ButtonNovoCliente.Click
+  else if (Key = ord('E')) and (ssCtrl in Shift) and (ButtonEditar.Enabled) then
+    ButtonEditar.Click
+  else if (Key = VK_ESCAPE) then
+    Voltar.Click;
+end;
+
+procedure TFrmClientList.VoltarClick(Sender: TObject);
+begin
+  self.close;
+end;
+
+end.

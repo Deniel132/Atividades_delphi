@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/09/11 10:35:19.000.457,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/11/07 08:24:14.000.799,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/01/29 17:43:01.000.653,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/04/07 09:22:16.000.531,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/04/07 10:29:47.000.845,C:\ProjetosSG19\Unit2.pas=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/04/07 10:29:47.000.845,C:\ProjetosSG19\Unit2.dfm=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2026/04/07 10:29:54.000.735,C:\ProjetosSG19\Project2.dproj=C:\Users\user\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2026/04/07 11:13:04.000.412,=C:\ProjetosSG19\Unit1.pas</Transaction>
+    <Transaction>2026/04/07 11:58:04.000.988,=C:\ProjetosSG19\Unit3.pas</Transaction>
+    <Transaction>2026/04/07 14:05:15.000.156,C:\ProjetosSG19\projeto_teste\Unit3.dfm=C:\ProjetosSG19\Unit3.dfm</Transaction>
+    <Transaction>2026/04/07 14:05:15.000.156,C:\ProjetosSG19\projeto_teste\Unit3.pas=C:\ProjetosSG19\Unit3.pas</Transaction>
+    <Transaction>2026/04/07 17:00:17.000.829,=C:\ProjetosSG19\Unit4.pas</Transaction>
+    <Transaction>2026/04/07 18:04:52.000.850,C:\ProjetosSG19\Project2.dproj=C:\ProjetosSG19\Project2.dproj</Transaction>
+    <Transaction>2026/04/08 08:22:32.000.106,C:\ProjetosSG19\Project2.dproj=C:\ProjetosSG19\Project2.dproj</Transaction>
+  </Transactions>
+	<BT_BuildType>Debug</BT_BuildType>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Unit2.pas"/>
+    <File Path="Unit2.dfm"/>
+    <File Path="Unit1.pas"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit4.pas"/>
+    <File Path="Unit4.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
